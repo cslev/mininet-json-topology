@@ -23,7 +23,7 @@ class FVTopo(Topo):
 
         self.buildTopo()
 
-    def __fileUtility(self):
+    def fileUtility(self):
         with open(self.filePath) as f:
             self.data = json.load(f)
 
