@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from mininet.topo import Topo
 from mininet.net import Mininet
-from mininet.node import OVSKernelSwitch, RemoteController
+from mininet.node import OVSKernelSwitch, RemoteController, OVSBridge
 from mininet.cli import CLI
 from mininet.link import TCLink
 import json
@@ -55,6 +55,9 @@ class FVTopo(Topo):
 
             for opt in switch:
                 if opt == 'name' or opt == 'protocols':
+                    continue
+                if opt == 'cls' and switch[opt] == 'OVSBridge':
+                    switchConfig[opt] = OVSBridge
                     continue
                 switchConfig[opt] = switch[opt]
 

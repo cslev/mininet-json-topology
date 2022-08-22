@@ -3,18 +3,24 @@
        {
           "name":"h1",
           "cpu":0.5
-       }
+       },
+       {
+         "name":"h2",
+         "cpu":0.5
+      }
     ],
     "switches":[
        {
           "name":"s1",
           "protocols":"OpenFlow10",
-          "dpid":"1"
+          "dpid":"1",
+          "cls": "OVSBridge"
        },
        {
          "name":"s2",
          "protocols":"OpenFlow10",
-         "dpid":"2"
+         "dpid":"2",
+         "cls": "OVSBridge"
       }
     ],
     "links":[
@@ -23,6 +29,18 @@
           "e2":"s1",
           "bw":10,
           "delay":"100ms"
-       }
+       },
+       {
+         "e1":"s2",
+         "e2":"s1",
+         "bw":10,
+         "delay":"100ms"
+       },
+       {
+         "e1":"h2",
+         "e2":"s2",
+         "bw":10,
+         "delay":"100ms"
+      }
     ]
  }
