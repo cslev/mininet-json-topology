@@ -67,8 +67,9 @@ Note that you should install the `mininet` package first.
 ## Usage
 To add this utility class to your project, you should import the `FVTopo` class first.
 
-`from topo import FVTopo`
-
+```python
+from topo import FVTopo
+```
 then you can initialize `FVTopo` with your json file path.
 
 ```python
