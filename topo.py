@@ -14,8 +14,9 @@ class FVTopo(Topo):
 
     def __init__(self, filePath):
         """filePath: json topology file path"""
+        #print(f"JSON file is set to {filePath}")
         Topo.__init__(self)
-
+        
         self.filePath = filePath
         self.data = None
 
@@ -78,27 +79,30 @@ class FVTopo(Topo):
             self.addLink(link['e1'], link['e2'], **linkConfig)
 
 
-topos = {'fvtopo': lambda : FVTopo()}
+json_topo_file="/home/mininet/mininet-json-topology-v2/topology_json/topo.json"
+topos = {'fvtopo': lambda : FVTopo(json_topo_file)}
 
-if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print('Usage: python3 topo.py [topo.json path]')
-        raise Exception('Invalid input')
 
-    topo = FVTopo(sys.argv[1])
 
-    net = Mininet(
-        topo=topo,
-        switch=OVSKernelSwitch,
-        build=False,
-        autoSetMacs=True,
-        autoStaticArp=True,
-        link=TCLink,
-        )
+# if __name__ == '__main__':
+#     # if len(sys.argv) != 2:
+#     #     print('Usage: python3 topo.py [topo.json path]')
+#     #     raise Exception('Invalid input')
+#     json_topo_file="./topology_json/topo.json"
+#     topo = FVTopo(filePath=json_topo_file)
 
-    controller = RemoteController('c1', ip='127.0.0.1', port=6633)
-    net.addController(controller)
-    net.build()
-    net.start()
-    CLI(net)
-    net.stop()
+#     net = Mininet(
+#         topo=topo,
+#         switch=OVSKernelSwitch,
+#         build=False,
+#         autoSetMacs=True,
+#         autoStaticArp=True,
+#         link=TCLink,
+#         )
+
+#     controller = RemoteController('c1', ip='127.0.0.1', port=6633)
+#     net.addController(controller)
+#     net.build()
+#     net.start()
+#     CLI(net)
+#     net.stop()
