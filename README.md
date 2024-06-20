@@ -1,6 +1,17 @@
-# mininet-json-topology
+# [FORKED ]mininet-json-topology
 
+Original project: [https://github.com/ali-a-a/mininet-json-topology](https://github.com/ali-a-a/mininet-json-topology)
 Python utility code for generating mininet topology based on json files.
+
+# FORKING...WHY?
+Nothing special, just want to wire the JSON file into the code, then I can use the standard `mn` command (or any other libraries working the same way) to initiate the topology.
+
+Like:
+```
+mn --custom mycustom_topo/topo.py --topo=mycustom_topo
+```
+
+For instance, the graphical representation of Mininet using MiniNAM also works as `mn` command, hence I want to use it too. Maybe I am wrong, and I just simply don't know how to set an argument for the `--custom` call :D
 
 ## File format
 
